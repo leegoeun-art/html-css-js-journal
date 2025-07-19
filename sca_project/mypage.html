@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My page</title>
+  <link rel="stylesheet" href="/jsCss/mypage.css">
+  <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+          rel="stylesheet"
+  />
+
+</head>
+<body onload="loaduserinfo()">
+  <header>
+    <h1><a href="/">SMULET</a></h1>
+    <nav>
+      <a href="#"><b>이용안내</b></a>
+      <a href="/login_page" id="loginLink"><b>로그인</b></a>
+      <a href="/Register" id = "registerLink"><b>회원가입</b></a>
+      <a href="/" id="logoutLink" style="display: none;"><b>로그아웃</b></a>
+      <a href="/" id="" style="display: none;"><b>마이페이지</b></a>
+    </nav>
+  </header>
+<main>
+  <div class="container">
+    <!-- BOX1 -->
+    <div class="box box1">
+      <div class="section">
+        <h2>내 정보</h2>
+        <div class="nav">
+          <div class="info">
+            <p>이름: <span id="userName"></span></p>
+            <p>이메일: <span id="studentId"></span></p>
+            <p>학과: <span id="userMajor">컴퓨터과학과</span></p>
+          </div>
+        </div>
+        <div class="section">
+          <h3>비밀번호 변경</h3>
+          <div class = "button-group-vertical">
+            <button onclick="modifinguserinfo()">변경</button>
+          </div>
+        </div>
+      </div>
+      <div class="section">
+        <h3>회원탈퇴</h3>
+        <button class="red" onclick="deleteAccount()">탈퇴</button>
+      </div>
+    </div>
+
+    <div id="modalOverlay" class="modal-overlay hidden">
+      <div class = "modal-wrapper">
+        <div class="modal">
+          <p>비밀번호를 입력하세요</p>
+          <input type="password" id="pw">
+          <div style="margin-top: 10px;">
+            <button id="confirm" type="button">확인</button>
+            <button id="close-btn" type="button">닫기</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="changePwModal" class="modal-overlay hidden">
+      <div class="modal-wrapper">
+        <div class="modal">
+          <p>새 비밀번호를 입력하세요</p>
+          <input type="password" id="newPassword" placeholder="새 비밀번호">
+          <input type="password" id="confirmPassword" placeholder="비밀번호 확인">
+          <div style="margin-top: 10px;">
+            <button id="changePwBtn" type="button">변경</button>
+            <button id="cancelChange" type="button">취소</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOX2 -->
+    <div class="box box2">
+      <h2>테크트리</h2>
+      <p class="subtext">모든 테크트리를 만나보세요!</p>
+
+      <select id="techTreeSelect" onchange="goToTechTree()" style="margin-top: 12px;">
+        <option value="">학번을 선택하세요</option>
+        <option value="21">21학번 테크트리</option>
+        <option value="22">22학번 테크트리</option>
+        <option value="23">23학번 테크트리</option>
+        <option value="24">24학번 테크트리</option>
+        <option value="25">25학번 테크트리</option>
+      </select>
+
+    </div>
+
+    <div class="box box3">
+      <h2>시간표</h2>
+      <p class="subtext">시간표를 만나보세요!</p>
+
+      <div style="margin-top: 12px;">
+        <button id="showSemesterBtn">시간표 추가</button>
+      </div>
+
+      <!-- 추가 가능한 학기 목록 (탑다운: 최근 → 과거 순) -->
+      <div id="addSemesterList" class="hidden" style="margin-top: 10px;">
+        <select id="semesterSelect">
+          <!-- JS에서 동적으로 채워짐 -->
+        </select>
+        <button onclick="addSemester()">추가</button>
+      </div>
+
+      <!-- 시간표 목록 -->
+      <ul id="semesterList" style="margin-top: 12px;"></ul>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <b>
+    <a href="#">Github</a>
+    <a href="#">개인정보처리방침</a>
+    <a href="#">이용약관</a><br><br>
+    <a href="#">Copyright</a>
+  </b>
+</footer>
+
+<script src="/jsCss/mypage.js" defer></script>
+</body>
+</html>
