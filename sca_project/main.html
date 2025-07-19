@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SMULET</title>
+    <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+            rel="stylesheet"
+    />
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: url('/images/smu.jpg') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+
+        .wrapper {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+            background-color: rgb(255, 255, 255, 0.85);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            font-weight: bold;
+            color: #2563eb;
+            margin: 0;
+        }
+        h1 a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.2s ease, font-size 0.2s ease;
+        }
+
+        nav a:hover {
+            color: #3b82f6;
+            font-size: 1.1rem;
+        }
+
+        .links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px auto;
+            max-width: 700px;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100px;
+            position: relative;
+        }
+
+        .logo-box {
+            width: 100px;
+            height: 127px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .logo-caption {
+            color: white;
+            font-weight: bold;
+            font-size: 13px;
+            margin-top: 8px;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-box:hover {
+            transform: scale(1.07);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo-box:hover + .logo-caption {
+            opacity: 0;
+        }
+
+        main {
+            flex: 1;
+            height: 100px; /* 원하는 고정값 */
+            width: 400px; /* 고정 너비도 같이 주면 깔끔 */
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 30px;
+            margin: 40px auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #3b82f6;
+            font-weight: 700;
+        }
+
+        .login-btn, .mypage-btn{
+            display: inline-block;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 12px;
+            background: #60a5fa;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .login-btn a, .mypage-btn a {
+            color: white; /* 흰색 글씨 */
+            text-decoration: none; /* 밑줄 제거 */
+        }
+        .login-btn:hover, .mypage-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+        footer {
+            background-color: rgb(40, 40, 40, 0.99);
+            font-size: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+        }
+        footer a {
+            text-decoration: none;
+            color: rgba(156, 156, 156, 0.7);
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <h1><a href="/">SMULET</a></h1>
+        <nav>
+            <a href="#"><b>이용안내</b></a>
+            <a href="/login_page" id="loginLink"><b>로그인</b></a>
+            <a href="/Register" id = "registerLink"><b>회원가입</b></a>
+            <a href="/" id="logoutLink" style="display: none;"><b>로그아웃</b></a>
+        </nav>
+    </header>
+
+    <div class="links">
+        <div class="logo-container">
+            <a href="https://www.smu.ac.kr" class="logo-box" target="_blank">
+                <img src="images/상명대 로고.jpg" alt="상명대 로고" />
+            </a>
+            <div class="logo-caption">상명대</div>
+        </div>
+
+        <div class="logo-container">
+            <a href="https://lib.smu.ac.kr" class="logo-box" target="_blank">
+                <img src="images/학술정보관.png" alt="학술정보관" />
+            </a>
+            <div class="logo-caption">학술정보관</div>
+        </div>
+
+        <div class="logo-container">
+            <a href="https://ecampus.smu.ac.kr" class="logo-box" target="_blank">
+                <img src="images/코스모스.png" alt="e-campus" />
+            </a>
+            <div class="logo-caption">e-campus</div>
+        </div>
+
+        <div class="logo-container">
+            <a
+                    href="https://sso.smu.ac.kr/sso/index.jsp"
+                    class="logo-box"
+                    target="_blank"
+            >
+                <img src="images/샘물.png" alt="샘물" />
+            </a>
+            <div class="logo-caption">샘물</div>
+        </div>
+    </div>
+
+    <main>
+        <div class="title">상명대 컴퓨터과학과</div>
+        <div class="subtitle">SMULET</div>
+        <div class="login-btn"  id="loginbox"><a href="/login_page">로그인</a></div>
+        <button class="mypage-btn" id = "myPagelink" onclick="mypage()">마이페이지</button>
+    </main>
+    <footer>
+        <b>
+            <a href="#">Github</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">이용약관</a>
+            <br />
+            <br />
+            <a href="#">Copyright</a>
+        </b>
+    </footer>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const loginLink = document.getElementById('loginLink');
+        const loginbox = document.getElementById('loginbox');
+        const logoutLink = document.getElementById('logoutLink');
+        const myPagelink = document.getElementById('myPagelink');
+        const registerLink = document.querySelector('nav a[href="/Register"]');
+        const token = localStorage.getItem('jwtToken');
+
+        if (token) {
+            loginLink.style.display = 'none';
+            loginbox.style.display = 'none';
+            logoutLink.style.display = 'inline';
+            myPagelink.style.display = 'inline';
+            registerLink.style.display = 'none';
+        } else {
+            loginLink.style.display = 'inline';
+            loginbox.style.display = 'inline';
+            logoutLink.style.display = 'none';
+            registerLink.style.display = 'inline';
+            myPagelink.style.display = 'none';
+        }
+
+        logoutLink.addEventListener('click', function (e) {
+            e.preventDefault();
+            localStorage.removeItem('jwtToken');
+            alert('로그아웃 되었습니다.');
+            window.location.href = '/';
+        });
+
+    });
+    function mypage() {
+        const token = localStorage.getItem('jwtToken');
+        if (!token) {
+            alert("로그인이 필요합니다.");
+            return;
+        }
+
+        fetch('/my_page', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+            .then(res => {
+                if (!res.ok) throw new Error('요청 실패: ' + res.status);
+                return res.text();
+            })
+            .then(html => {
+                console.log("📥 전체 HTML 응답 수신됨");
+
+                // 페이지 전체 갈아끼움
+                document.open();
+                document.write(html);  // 💥 이거는 기존 상태 완전 초기화
+                document.close();
+            })
+            .catch(err => {
+                console.error("❌ 마이페이지 전체 로딩 실패:", err);
+                alert("마이페이지 로딩 중 오류 발생");
+            });
+    }
+
+
+</script>
+
+</body>
+</html>
